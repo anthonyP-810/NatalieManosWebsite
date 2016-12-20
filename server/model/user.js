@@ -1,6 +1,6 @@
 //Friend Model
 console.log('User model');
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
 
 module.exports = function () {
 
