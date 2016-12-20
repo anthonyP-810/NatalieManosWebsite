@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/styles/styles.css" rel="stylesheet" />
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+    <script src="angular/angular.js"></script>
+    <script src="angular-route/angular-route.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+    <script>
+        //$(function () {
+        //    $('#tabs').tabs();
+        //});
+
+        var app = angular.module('myApp', ['ngRoute']);
+        app.config(function ($routeProvider)
+        {
+            $routeProvider.when('/videos', {
+                templateUrl: 'partials/videos.html'
+            })
+            .when('/singles', {
+                templateUrl: 'partials/singles.html'
+            })
+        })
+
+        //$('#tabs a').on('click', function (event) {    // this lets you click on any li element inside #buttons
+        //    $(".selected").removeClass('selected');    // remove the selected class wherever it may be
+        //    $(this).addClass('selected');    // add the selected class to the clicked element
+        //    $(".tabContent").hide();    // hide all the elements with the class tabContent (added above)
+        //    $("#" + $(this).prop("id") + "content").show();    // show the content we want, by taking the ID of the list element and concatenating it into a string that will match the id of one of the content divs
+        //});
+    </script>
+
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            <div class="nav">
+                <ul>
+                    <li class="logo">Western Grit Music </li>
+                    <li>/ Events /</li>
+                    <li>Photos /</li>
+                    <li>About /</li>
+                    <li>Book An Event /</li>
+                </ul>
+            </div>
+            <div class="mainImage">
+                <div class="mainImageFooter">
+                    <div class="innerFooter">
+                        <h2 class="logo">New Single</h2>
+                        <h3>Sex and Candy</h3>
+                    </div>
+                    <div class="innerFooter">
+                        <a href="#/singles"><img src="/images/play-button.jpg" alt="press-play-logo" /></a>
+                    </div>
+                    <div class="innerFooter">
+                        <span><b>
+                            "Western-Grit will make you get up out your seat and boogie. They have a new groove that you haven't heard before..."
+                        </b></span><quote>Lebron James</quote>
+                    </div>
+                    <div class="innerFooter">
+                        <button>Find Out More</button>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div>
+                    <ul class="list-inline nav nav-tabs">
+                        <li class="active"><a href="#/videos">Videos</a></li>
+                        <li><a href="#/singles">Singles</a></li>
+                        <li><a href="#tabs-3">Compilations</a></li>
+                    </ul>
+                </div>
+                <div ng-view="">
+                   
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

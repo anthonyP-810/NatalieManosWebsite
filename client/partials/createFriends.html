@@ -1,0 +1,11 @@
+﻿<div ng-controller="showFriendsController" class="form-group" style="width: 300px;">
+    <div ng-messages="createForm.first_name.$error">
+        <p ng-message="minlength">First name too short.</p>
+    </div>
+    <form name="createForm">
+        First Name <input type="text" name="first_name" value="" class="form-control" ng-model="newFriend.first_name" ng-minlength="2"/> 
+        Last Name <input type="text" name="last_name" value="" class="form-control" ng-model="newFriend.last_name" /> 
+        Birthday <input type="datetime" name="calendar" value="" class="form-control" ng-model="newFriend.birthdate" /> 
+        <input type="submit" name="subBtn" value="Create" class="form-control" ng-click="postUser()" />
+    </form>
+</div>
