@@ -1,12 +1,15 @@
 'use strict'
 
 console.log('future routes');
-//var friends = require('../controller/main.js');
+//var user = require('../controller/userController.js');
+//var product = require('../controller/productController.js');
 
-//module.exports = function (app) {
-//    app.get('/friends', friends.index);
-//    app.get('/friends/:id', friends.show);
-//    app.post('/friends', friends.create);
-//    app.put('/friends/:id', friends.update);
-//    app.delete('/friends/:id', friends.delete);
-//};
+module.exports = function (app) {
+    //app.get('/', user.index);
+    //app.post('/product', product.create);
+    //app.get('/getProducts1', product.show1)
+    //app.post('/login', user.create);
+    //app.post('/topic', topic.create)
+    //app.put('/user/:id', user.update);
+    //app.delete('/user/:id', user.delete);
+};
