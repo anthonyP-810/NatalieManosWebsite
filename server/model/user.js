@@ -9,7 +9,7 @@ module.exports = function () {
     var userSchema = new mongoose.Schema({
         first_name: { type: String },
         last_name: { type: String },
-        email:
+        email: {type : String}
     }, { timestamps: { created_at: 'created_at', updated_at: 'updated_at' } });
 
     mongoose.model('User', userSchema);
