@@ -49,10 +49,15 @@ body
     font-weight: bold;
     font-variant:small-caps;
     margin-left: 10px;
-    font-size:xx-large;
+    font-size:x-large;
     display:inline;
     text-decoration:none;
     color: lightgrey;
+}
+
+#homeLinks li a
+{
+    color:grey
 }
 
 .mainImage
@@ -63,6 +68,11 @@ body
     margin: 20px auto;
     background-image:url('/images/nat1.jpg');
     display:inline-block;
+}
+
+#weddingList li
+{
+    margin-left: 40px
 }
 
 
@@ -111,7 +121,7 @@ body
 
 .innerFooter button
 {
-    margin-top:20px;
+    margin-top:0px;
     margin-left:60px;
     width:100px;
     border-radius:1px;
@@ -174,6 +184,11 @@ body
     background-color:white;
 }
 
+#homeLinks .pageHeader
+{
+    color:black;
+}
+
 .content ul li
 {
     margin-right:10px;
@@ -192,7 +207,6 @@ body
 .innerContent1
 {
     display:inline-block;
-    margin-right:60px;
 }
 
 #tabs-1 iframe

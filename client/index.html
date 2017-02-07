@@ -3,8 +3,8 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
 <head>
     <meta charset="utf-8" />
-    <title></title>
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <title>Western Grit Music</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/styles/styles.css" rel="stylesheet" />
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
@@ -12,13 +12,11 @@
     <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
     <script src="angular/angular.js"></script>
     <script src="angular-route/angular-route.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
     <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
     <script>
-        //$(function () {
-        //    $('#tabs').tabs();
-        //});
-
+      
         var app = angular.module('myApp', ['ngRoute']);
         app.config(function ($routeProvider)
         {
@@ -31,6 +29,50 @@
             .when('/book', {
                 templateUrl: 'partials/book.html'
             })
+            .when('/weddings', {
+                templateUrl: 'partials/weddings.html'
+            })
+            .when('/events', {
+                templateUrl:'partials/events.html'
+            })
+            .when('/success', {
+                templateUrl: 'partials/success.html'
+            })
+        })
+
+        app.controller('EventsController', ['$scope', '$location', 'eventFactory', function ($scope, $location, eventFactory) {
+            $scope.event = {};
+
+            $scope.bookEvent = function () {
+                eventFactory.saveEvent($scope.eventData, function (data) {
+                    $scope.event = data;
+                    $location.url('/success')
+                });
+
+            };
+
+        }]);
+
+        app.controller('MainController', ['$scope', '$location', function ($scope, $location) {
+            $scope.showEvents = function () {
+                $location.url('/events')
+            }
+        }])
+
+        app.factory('eventFactory', function($http){
+            var eventFactory = {}
+
+            eventFactory.saveEvent = function (event, callback) {
+                console.log("Inside even factory")
+                $http.post('/event', event).then(function (response) {
+                    callback(response.data)
+                },
+                function (response) {
+                    console.log("Inside failure" + response.data)
+                })
+            }
+
+            return eventFactory;
         })
 
         //$('#tabs a').on('click', function (event) {    // this lets you click on any li element inside #buttons
@@ -40,18 +82,26 @@
         //    $("#" + $(this).prop("id") + "content").show();    // show the content we want, by taking the ID of the list element and concatenating it into a string that will match the id of one of the content divs
         //});
     </script>
+    <script>
+        //$(document).ready(function () {
+        //    $('#bookBtn').click(function () {
+        //        $.get("#/events")
+        //    })
+
+        //})
+    </script>
 
 </head>
-<body>
+<body ng-controller="MainController">
     <div id="container">
         <div id="wrapper">
             <div class="nav">
-                <ul>
-                    <li class="logo">Western Grit Music </li>
-                    <li><a href="#/">/ Events /</a></li>
-                    <li><a href="#/">Photos /</a></li>
-                    <li><a href="#/">About /</a></li>
-                    <li><a href="#/book">Book An Event /</a></li>
+                <ul id="homeLinks">
+                    <li class="logo"><a href="/" style="color: black; text-decoration: none">Western Grit Music</a></li>
+                    <li><a href="#/singles">/ Singles /</a></li>
+                    <li><a href="#/videos">Videos /</a></li>
+                    <li><a href="#/">Services /</a></li>
+                    <li><a href="#/events">Book An Event</a></li>
                 </ul>
             </div>
             <div class="mainImage">
@@ -69,20 +119,20 @@
                         </b></span><quote>Erykah Badu</quote>
                     </div>
                     <div class="innerFooter">
-                        <button>Book Event Today</button>
+                        <button id="bookBtn" ng-click="showEvents()">Book Event Today</button>
                     </div>
                 </div>
             </div>
             <div class="content">
-                <div>
+                <div id="tabs">
                     <ul class="list-inline nav nav-tabs">
                         <li class="active"><a href="#/videos">Videos</a></li>
                         <li><a href="#/singles">Singles</a></li>
-                        <li><a href="#tabs-3">Compilations</a></li>
+                        <li><a href="#/weddings">Weddings</a></li>
+                        <li><a href="#/events">Book an Event</a></li>
                     </ul>
                 </div>
                 <div ng-view="">
-                   
                     
                 </div>
             </div>

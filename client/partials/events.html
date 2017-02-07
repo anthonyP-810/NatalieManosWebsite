@@ -1,0 +1,22 @@
+﻿<div ng-controller="EventsController">
+    <h2>Schedule Western Grit today!</h2>
+    <form>
+        <div class="form-group">
+            <label for="Company">Company Name</label>
+            <input type="text" class="form-control" id="Company" placeholder="Company Name" ng-model="eventData.company" />
+        </div>
+        <div class="form-group">
+            <label for="Email">Email Address</label>
+            <input type="text" class="form-control" id="Email" placeholder="Email" ng-model="eventData.email" />
+        </div>
+        <div class="form-group">
+            <label for="Date">Date Needed</label>
+            <input type="date" class="form-control" id="Date" placeholder="Date Needed" ng-model="eventData.date" />
+        </div>
+        <div class="form-group">
+            <label for="Additional Information">Additional Information</label>
+            <textarea class="form-control" id="Additional Information" placeholder="Additional Information/Requirements" ng-model="eventData.information"></textarea>
+        </div>
+        <button type="submit" ng-click="bookEvent()" class="btn btn-default">Book Event</button>
+    </form>
+</div>
